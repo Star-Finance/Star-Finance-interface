@@ -7,6 +7,9 @@ export default function index(props: {
   return (
     <div>
       { props.header }
+      <div className="main">
+          {props.children}
+      </div>
     </div>
   )
 }
