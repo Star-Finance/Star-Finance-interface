@@ -2,12 +2,13 @@ import React from 'react'
 import { Routes, Route } from 'react-router-dom';
 import L1 from './launchpad';
 import './index.less';
+import Menu from '../../components/menu'
 
-export default function index() {
+export default function index(props: any) {
+  console.log(props);
   return (
     <div className='defiContainer'>
-        defi首页
-        菜单部分
+        <Menu />
         <div className='defi__main'>
             <div className='defi__content'>
                 <Routes>
