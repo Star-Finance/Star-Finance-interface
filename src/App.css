@@ -1,10 +1,2 @@
+/* @import '~antd/dist/antd.less'; */
 @import '~antd/dist/antd.css';
-
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}

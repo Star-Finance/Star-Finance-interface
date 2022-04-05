@@ -10,3 +10,86 @@
         }
     }
 }
+
+.stakingList{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    .item{
+        min-width: 32%;
+        border: 1px solid #fff;
+        border-radius: 5%;
+        overflow: hidden;
+        h2{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #f6f2f1;
+            padding: 10px 20px;
+            img{
+                width: 64px;
+                height: 64px;
+                border-radius: 50%;
+                overflow: hidden;
+            }
+        }
+        .content{
+            padding: 10px 20px;
+            border: 1px solid #fff;
+            border-radius: 5%;
+            background-color: #fff;
+            .time {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                li{
+                    display: inline-block;
+                    border: 1px solid orange;
+                    padding: 2px 10px;
+                    color: orange;
+                    border-radius: 5px;
+                }
+                li:not(:last-child){
+                    margin-right: 3px;
+                }
+            }
+            .apy{
+                color: #00b595;
+                font-size: 24px;
+                font-weight: 900;
+                span{
+                    color: #666;
+                    font-size: 16px;
+                    font-weight: 500;
+                }
+            }
+            .vl{
+                background-color: rgba(255,163,79,.06);
+                color:#fff;
+                display: flex;
+                justify-content: space-around;
+                padding: 15px 0;
+                >div{
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    span{
+                        color: black;
+                        font-weight: 600;
+                        font-size: 18px;
+                    }
+                    span:last-child{
+                        color: #666;
+                        font-size: 16px;
+                    }
+                }
+            }
+            .approve{
+                display: flex;
+                padding: 20px 0;
+                justify-content: space-between;
+            }
+        }
+    }
+}
