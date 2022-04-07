@@ -22,6 +22,7 @@ const actions = bindActionCreators(actionCreators, store.dispatch);
 //     name: "用户3",
 //     age: 13
 // }))
+
 actions.addUser({
     id: uuid(),
     name: "用户3",

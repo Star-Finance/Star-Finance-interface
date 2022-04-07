@@ -7,6 +7,7 @@ const initState = [
 ];
 
 export default (state = initState, { type, payload }) => {
+    console.log(type);
     switch (type){
         case ADDUSER: 
             return [

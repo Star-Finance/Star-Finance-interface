@@ -1,16 +1,16 @@
-function isPlainObject (obj) {
-    if(typeof obj !== 'object') {
-        return false
-    }
-    return Object.getPrototypeOf(obj) === Object.prototype
-}
+import { getRandomString } from './utils/ActionTypes';
+import ActionTypes from './utils/ActionTypes';
+import { isPlainObject } from './utils/isPlainObject';
 
 /**
- * 得到一个指定长度的随机字符串
- * @param {*} length 
+ * 得到一个自动分发的action创建函数
+ * @param {*} actionCreator 
+ * @param {*} dispatch 
  */
-function getRandomString(length) {
-    return Math.random().toString(36).substr(2, length).split("").join(".")
+function getAutoDispatchActionCreator(actionCreator, dispatch) {
+    return function(...args) {
+        dispatch(actionCreator(...args));
+    }
 }
 
 /**
@@ -88,7 +88,7 @@ export function bindActionCreators(actionCreators, dispatch) {
                 if(typeof actionCreators[key]!=="function") {
                     throw new TypeError("actionCreators must be an function")
                 }
-                result[key] = actionCreators[key]
+                result[key] = getAutoDispatchActionCreator(actionCreators[key], dispatch)
             }
         }
         return result;
@@ -98,12 +98,46 @@ export function bindActionCreators(actionCreators, dispatch) {
 }
 
 /**
- * 得到一个自动分发的action创建函数
- * @param {*} actionCreator 
- * @param {*} dispatch 
+ * 组装reducer
+ * @param {*} reducer 
  */
-function getAutoDispatchActionCreator(actionCreator, dispatch) {
-    return function(...args) {
-        dispatch(actionCreator(...args));
+export function combineReducers (reducers) {
+    validateReducer(reducers); // 验证reduces
+    return function (state = {}, action) {
+        const newState = {};
+        for(const key in reducers) {
+            if(reducers.hasOwnProperty(key)) {
+                const reducer = reducers[key];
+                newState[key] = reducer(state[key], action);
+            }
+        }
+        return newState;
+    }
+}
+
+function validateReducer(reducers) {
+    if(typeof reducers !== "object") {
+        throw new TypeError("reducers must be an object");
+    }
+    if(!isPlainObject(reducers)) {
+        throw new TypeError("reducers must be an plain object");
+    }
+
+    for(const key in reducers) {
+        if(reducers.hasOwnProperty(key)) {
+            const reducer = reducers[key];
+            let state = reducer(undefined, {
+                type: ActionTypes.INIT()
+            })
+            if(state === undefined) {
+                throw new TypeError("reducers must be not return undefined")
+            }
+            state = reducer(undefined, {
+                type: ActionTypes.UNKNOWN()
+            })
+            if(state === undefined) {
+                throw new TypeError("reducers must be not return undefined")
+            }
+        }
     }
 }
