@@ -53,6 +53,7 @@
   },
   "devDependencies": {
     "@types/axios": "^0.14.0",
+    "@types/uuid": "^8.3.4",
     "craco-less": "^2.0.0",
     "customize-cra": "^1.0.0",
     "react-app-rewired": "^2.2.1",

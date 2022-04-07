@@ -1,6 +1,7 @@
 import { getRandomString } from './utils/ActionTypes';
 import ActionTypes from './utils/ActionTypes';
 import { isPlainObject } from './utils/isPlainObject';
+import compose from './utils/compose';
 
 /**
  * 得到一个自动分发的action创建函数
@@ -138,6 +139,36 @@ function validateReducer(reducers) {
             if(state === undefined) {
                 throw new TypeError("reducers must be not return undefined")
             }
+        }
+    }
+}
+
+/**
+ * 注册中间键函数
+ * @param  {...any} middleware 
+ * @returns 
+ * compose 函数组合
+ */
+export function applyMiddleware(...middleware) {
+    return function (createStore) { // 给我创建仓库的函数
+        // 虾面的函数用来创建仓库
+        return function (reducer, defaultState) {
+            const store = createStore(reducer, defaultState);
+            let dispatch = () => { throw new TypeError("目前还不能使用dispatch") }
+            const simpleStore = {
+                getState: store.getState,
+                dispatch: store.dispatch
+            }
+            // 通过中间键覆盖之前的dispatch
+            // 通过中间键数组，得到一个dispath创建的数组
+            const dispatchProducers = middleware.map(mid => mid(simpleStore))
+            const dispatchProducer = compose(...dispatchProducers);
+            dispatch = dispatchProducer(store.dispatch);
+            return {
+                dispatch,
+                ...store
+            }
+
         }
     }
 }
