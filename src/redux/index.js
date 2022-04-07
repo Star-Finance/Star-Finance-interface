@@ -4,15 +4,35 @@ import * as userAction from './actions/usersAction';
 import { v1 as uuid } from 'uuid';
 
 /**
- * 中间键
- * 本质是得到一个dispatch函数
+ * 一个中间件函数
+ * @param {*} store 
  */
 function logger1(store) {
-    console.log("logger1")
+    return function (next) {
+        //下面返回的函数，是最终要应用的dispatch
+        return function (action) {
+            console.log("中间件1")
+            console.log("旧数据", store.getState());
+            console.log("action", action);
+            next(action);
+            console.log("新数据", store.getState());
+            console.log("")
+        }
+    }
 }
 
 function logger2(store) {
-    console.log("logger1", store)
+    return function (next) {
+        //下面返回的函数，是最终要应用的dispatch
+        return function (action) {
+            console.log("中间件2")
+            console.log("旧数据", store.getState());
+            console.log("action", action);
+            next(action);
+            console.log("新数据", store.getState());
+            console.log("")
+        }
+    }
 }
 
 const store = createStore(reducer, applyMiddleware(logger1, logger2));

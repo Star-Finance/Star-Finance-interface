@@ -20,7 +20,16 @@ function getAutoDispatchActionCreator(actionCreator, dispatch) {
  * @param {*} defaultState 默认的状态 
 * 返回dispatch、getState、subscribe等函数
  */
-export function createStore(reducer, defaultState) {
+export function createStore(reducer, defaultState, enhanced) {
+
+    if(typeof defaultState === "function") {
+        enhanced = defaultState;
+        defaultState = undefined;
+    }
+
+    if (typeof enhanced === "function") {
+        return enhanced(createStore)(reducer, defaultState);
+    }
 
     let currentState = defaultState,
     currentReducer = reducer;
