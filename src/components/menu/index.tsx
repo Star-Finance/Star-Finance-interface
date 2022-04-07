@@ -21,7 +21,7 @@ const Sider = () => {
   };
 
   return (
-    <Menu mode="inline" openKeys={openKeys} onOpenChange={onOpenChange} style={{ width: 256 }}>
+    <Menu mode="inline" openKeys={openKeys} onOpenChange={onOpenChange} style={{ width: 256, position: "fixed", height: '100%' }}>
       <Menu.Item key="1" icon={<AppstoreOutlined/>}>
         <Link to="/defi">Home</Link>
       </Menu.Item>

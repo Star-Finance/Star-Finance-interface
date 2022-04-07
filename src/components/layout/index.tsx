@@ -7,7 +7,7 @@ export default function index(props: {
   return (
     <div>
       { props.header }
-      <div className="main">
+      <div className="main" style={{ marginTop: 80 }}>
           {props.children}
       </div>
     </div>

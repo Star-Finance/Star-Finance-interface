@@ -6,7 +6,6 @@ import Menu from '../../components/menu'
 import Staking from './Staking';
 
 export default function index(props: any) {
-  console.log(props);
   return (
     <div className='defiContainer'>
         <Menu />
