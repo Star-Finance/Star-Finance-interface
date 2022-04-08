@@ -43,12 +43,14 @@ export default function Wallet() {
     }, [])
 
   return (
-    <Button
-        loading={loading}
-        onClick={connectWallet}
-        style={{background: 'orange', color: '#fff'}}
-        size="large" shape="round" type="text">
-        {account ? `${account.substring(0, 6)}...${account.substring(account.length - 6, account.length)}` : 'CONNECT WALLET'}
-    </Button>
+      <span>
+          <Button
+            loading={loading}
+            onClick={connectWallet}
+            style={{background: 'orange', color: '#fff'}}
+            size="large" shape="round" type="text">
+            {account ? `${account.substring(0, 6)}...${account.substring(account.length - 6, account.length)}` : 'CONNECT WALLET'}
+        </Button>
+      </span>
   )
 }

@@ -2,6 +2,7 @@ import React from 'react'
 import './index.less';
 import img from '../../assets/images/logo.png';
 import Wallet from '../Wallet';
+import Navigator from '../Navigation';
 
 export default function index() {
   return (
@@ -11,10 +12,10 @@ export default function index() {
         <span>logo: Star.Trade</span>
       </div>
       <div className='header__right'>
-        <div className="header_nav">
-          导航模块
+        <div style={{flex: 1}}>
+          <Navigator />
         </div>
-        <div>
+        <div style={{minWidth: 291}}>
           {/* <span className='chainList'>链列表</span> */}
           <Wallet></Wallet>
           {/* <span className='lang'>语言选择</span> */}

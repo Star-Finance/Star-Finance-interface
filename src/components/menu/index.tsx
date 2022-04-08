@@ -22,8 +22,8 @@ const Sider = () => {
 
   return (
     <Menu mode="inline" openKeys={openKeys} onOpenChange={onOpenChange} style={{ width: 256, position: "fixed", height: '100%' }}>
-      <Menu.Item key="1" icon={<AppstoreOutlined/>}>
-        <Link to="/defi">Home</Link>
+      <Menu.Item key="/defi/staking" icon={<AppstoreOutlined/>}>
+        <Link to="/defi/staking">Staking</Link>
       </Menu.Item>
       <SubMenu key="sub2" icon={<AppstoreOutlined />} title="Frams">
         <Menu.Item key="5">
@@ -33,9 +33,6 @@ const Sider = () => {
           <Link to="/defi/l2">单币质押挖矿</Link>
         </Menu.Item>
       </SubMenu>
-      <Menu.Item key="7" icon={<AppstoreOutlined/>}>
-        <Link to="/defi/staking">Staking</Link>
-      </Menu.Item>
       <SubMenu key="sub4" icon={<SettingOutlined />} title="DAO">
         <Menu.Item key="9">Lock up</Menu.Item>
         <Menu.Item key="10">Repurchase</Menu.Item>

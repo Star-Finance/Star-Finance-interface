@@ -4,7 +4,7 @@ export default function index(props: any) {
   console.log(999, props)
   return (
     <div>
-      launchpad
+      Launchpad
     </div>
   )
 }

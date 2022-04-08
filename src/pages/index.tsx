@@ -1,11 +1,12 @@
 import React from 'react';
 import Layout from '../components/layout';
 import Header from '../components/header';
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import DefiHome from './DeFi';
 import EexHome from './DEX';
 import NFTHome from './NFT';
 import DaoHome from './DAO';
+import Launchpad from './Launchpad';
 
 export default function index() {
   return (
@@ -17,6 +18,7 @@ export default function index() {
         <Route path="/dex" element={<EexHome />} />
         <Route path="/nft" element={<NFTHome />} />
         <Route path="/dao" element={<DaoHome />} />
+        <Route path="/launchpad" element={<Launchpad />} />
       </Routes>
     </Layout>
   )
