@@ -166,7 +166,7 @@ export function applyMiddleware(...middleware) {
             let dispatch = () => { throw new TypeError("目前还不能使用dispatch") }
             const simpleStore = {
                 getState: store.getState,
-                dispatch: store.dispatch
+                dispatch: (...args) => dispatch(...args) 
             }
             // 通过中间键覆盖之前的dispatch
             // 通过中间键数组，得到一个dispath创建的数组

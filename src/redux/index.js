@@ -2,6 +2,7 @@ import { createStore, bindActionCreators, applyMiddleware } from 'redux';
 import reducer from './reducer';
 import * as userAction from './actions/usersAction';
 import { v1 as uuid } from 'uuid';
+import thunk from 'redux-thunk';
 
 /**
  * 一个中间件函数
@@ -35,7 +36,7 @@ function logger2(store) {
     }
 }
 
-const store = createStore(reducer, applyMiddleware(logger1, logger2));
+const store = createStore(reducer, applyMiddleware(thunk));
 
 console.log(store.getState());
 
