@@ -14,6 +14,7 @@ class Navigation extends React.Component {
       <Menu
         onClick={this.handleClick}
         defaultSelectedKeys={['0']}
+        style={{border: "none"}}
         defaultOpenKeys={['sub1']}
         mode="horizontal"
       >
