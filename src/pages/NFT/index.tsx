@@ -23,7 +23,7 @@ export default function indedx() {
       <div className='nft__box_warrp'>
         <NftBox imgsrc={nftimg} blindboxInfo={blindboxInfo} />
       </div>
-      <div className='nft__list'>
+      <div className='nft__list' style={{background: "#141414"}}>
         <NftList />
       </div>
     </div>
