@@ -1,14 +1,15 @@
 import React, { ReactNode } from 'react'
+import { Outlet } from 'react-router'
+import Header from '../header';
 
-export default function index(props: {
-    header: ReactNode,
-    children: ReactNode
-}) {
+export default function Layout() {
   return (
     <div>
-      { props.header }
+      <nav>
+        <Header />
+      </nav>
       <div className="main" style={{ marginTop: 80 }}>
-          {props.children}
+        <Outlet />
       </div>
     </div>
   )

@@ -1,8 +1,14 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import Home from './pages';
 import './App.css';
 import './redux/index'
+import DefiHome from './pages/DeFi';
+import EexHome from './pages/DEX';
+import NFTHome from './pages/NFT';
+import DaoHome from './pages/DAO';
+import Launchpad from './pages/Launchpad';
+import Layout from './components/layout';
+import Staking from './pages/DeFi/Staking';
 
 function* getGenerator(): any {
   console.log("函数运行--开始");
@@ -28,15 +34,20 @@ function iteratorCreator() {
   }
 }
 
-
-
 // const gennerator = getGenerator();
 window.gennerator = iteratorCreator();
 
 function App() {
   return (
     <Routes>
-      <Route path="/*" element={<Home />}></Route>
+      <Route path="/" element={<Layout />}>
+        <Route path='defi' element={<DefiHome />}>
+          <Route path="staking" element={<Staking />}></Route>
+        </Route>
+        <Route path='nft' element={<NFTHome />} />
+        <Route path='launchpad' element={<Launchpad />} />
+        <Route path='dao' element={<DaoHome />} />
+      </Route>
     </Routes>
   );
 }

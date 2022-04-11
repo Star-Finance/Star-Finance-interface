@@ -1,6 +1,5 @@
 import React from 'react'
-import { Routes, Route, Navigate } from 'react-router-dom';
-import L1 from '../Launchpad';
+import { Routes, Route, Navigate, Outlet } from 'react-router-dom';
 import './index.less';
 import Menu from '../../components/menu'
 import Staking from './Staking';
@@ -11,10 +10,7 @@ export default function index(props: any) {
         <Menu />
         <div className='defi__main'>
             <div className='defi__content'>
-                <Routes>
-                    <Route path="/staking" element={<Staking />}></Route>
-                    <Route path="/" element={() => <Navigate to="/staking" />} />{/*重定向组件*/}
-                </Routes>
+                <Outlet />
             </div>
         </div>
     </div>

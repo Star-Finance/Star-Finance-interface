@@ -25,17 +25,13 @@ const Sider = () => {
       <Menu.Item key="/defi/staking" icon={<AppstoreOutlined/>}>
         <Link to="/defi/staking">Staking</Link>
       </Menu.Item>
-      <SubMenu key="sub2" icon={<AppstoreOutlined />} title="Frams">
+      <SubMenu key="sub2" icon={<SettingOutlined />} title="Frams">
         <Menu.Item key="5">
           <Link to="/defi/l1">LP 质押挖矿</Link>
         </Menu.Item>
         <Menu.Item key="6">
           <Link to="/defi/l2">单币质押挖矿</Link>
         </Menu.Item>
-      </SubMenu>
-      <SubMenu key="sub4" icon={<SettingOutlined />} title="DAO">
-        <Menu.Item key="9">Lock up</Menu.Item>
-        <Menu.Item key="10">Repurchase</Menu.Item>
       </SubMenu>
     </Menu>
   );
