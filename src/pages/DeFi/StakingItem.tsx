@@ -9,6 +9,12 @@ export default function StakingItem() {
     const onChange = (value: number) => {
         setInputValue(value);
     };
+
+    const marks = {
+        0: '0',
+        40: '40%',
+        80: '80%'
+    };
   return (
     <div className='item'>
         <h2>
@@ -17,31 +23,44 @@ export default function StakingItem() {
         </h2>
         <div className='content'>
             <ul className='time'>
-                <li>Current</li>
-                <li>90 Day</li>
-                <li>60 Day</li>
-                <li>30 Day</li>
+                <li>活期</li>
             </ul>
             <div className='apy'>
-                <span>Apy</span>
-                <p>14.09% ~ 21.68%</p>
+                <div>
+                    <span>Apy</span>
+                    <p>14%</p>
+                </div>
+                <div>
+                    <span>锁仓量(FIL)</span>
+                    <p>149,860.82</p>
+                </div>
             </div>
             <div className='vl'>
                 <div>
-                    <span>149,860.82</span>
-                    <span>VL(FIL)</span>
+                    <span>我的资金</span>
+                    <span>98</span>
                 </div>
                 <div>
+                    <span>已存入(FIL)</span>
                     <span>0.0000</span>
-                    <span>Deposited(FIL)</span>
+                </div>
+            </div>
+             <div className='vl'>
+                <div>
+                    <Button size="large" shape="round">提取本金</Button>
+                </div>
+                <div>
+                    <Button size="large" shape="round">获取收益</Button>
                 </div>
             </div>
             <div className="count" style={{marginTop: 10}}>
                 <Row>
                     <Col span={14}>
                         <Slider
-                            min={1}
+                            min={0}
+                            marks={marks}
                             max={100}
+                            step={10}
                             onChange={onChange}
                             value={typeof inputValue === 'number' ? inputValue : 0}
                         />
@@ -58,8 +77,8 @@ export default function StakingItem() {
                 </Row>
             </div>
             <div className='approve'>
-                <Button size="large" style={{background: 'orange'}} shape="round">Strategy</Button>
-                <Button size="large" style={{background: 'orange'}} shape="round">approve</Button>
+                <Button size="large" style={{background: '#fff', padding: "0 50px"}} shape="round">退出</Button>
+                <Button size="large" style={{background: 'orange', padding: "0 50px"}} shape="round">存入</Button>
             </div>
         </div>
     </div>
