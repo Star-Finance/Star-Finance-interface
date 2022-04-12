@@ -3,12 +3,30 @@ import fileIcon from '../../assets/images/FIL.svg'
 import { Slider, InputNumber, Row, Col, Button } from 'antd';
 import './index.less';
 
-export default function StakingItem() {
+interface IStakingItem {
+    name: string;
+    apr: number;
+    totalSupply: number;
+    balanceOf: number;
+    earned: number;
+    stakeHandler: (value: number) => {}
+}
+
+export default function StakingItem(props: IStakingItem) {
+    const {name, apr, totalSupply, earned, stakeHandler, balanceOf} = props;
     const [inputValue, setInputValue] = useState<number>(1);
     
     const onChange = (value: number) => {
         setInputValue(value);
     };
+
+    const staking = () => {
+        if(inputValue) {
+            stakeHandler(inputValue)
+        } else {
+            alert("请输入金额")
+        }
+    }
 
     const marks = {
         0: '0',
@@ -18,7 +36,7 @@ export default function StakingItem() {
   return (
     <div className='item'>
         <h2>
-            <span>FIL</span>
+            <span>{name}</span>
             <img src={fileIcon} alt="" />
         </h2>
         <div className='content'>
@@ -28,21 +46,21 @@ export default function StakingItem() {
             <div className='apy'>
                 <div>
                     <span>Apy</span>
-                    <p>14%</p>
+                    <p>{apr.toFixed(2)+"%"}</p>
                 </div>
                 <div>
-                    <span>锁仓量(FIL)</span>
-                    <p>149,860.82</p>
+                    <span>锁仓量({name})</span>
+                    <p>{totalSupply}</p>
                 </div>
             </div>
             <div className='vl'>
                 <div>
                     <span>我的本金</span>
-                    <span>98</span>
+                    <span>{balanceOf}</span>
                 </div>
                 <div>
                     <span>奖励</span>
-                    <span>0.0000</span>
+                    <span>{earned}</span>
                 </div>
             </div>
              <div className='vl'>
@@ -78,7 +96,7 @@ export default function StakingItem() {
             </div>
             <div className='approve'>
                 <Button size="large" style={{background: '#fff', padding: "0 50px"}} shape="round">退出</Button>
-                <Button size="large" style={{background: 'orange', padding: "0 50px"}} shape="round">存入</Button>
+                <Button onClick={() => staking()} size="large" style={{background: 'orange', padding: "0 50px"}} shape="round">存入</Button>
             </div>
         </div>
     </div>
