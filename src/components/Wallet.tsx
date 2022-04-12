@@ -1,4 +1,4 @@
-import { Button } from 'antd'
+import { Button, notification } from 'antd'
 import React, { useEffect, useState } from 'react'
 
 export default function Wallet() {
@@ -21,6 +21,7 @@ export default function Wallet() {
 
     // 连接metamask钱包
     const connectWallet = async() => {
+        if(account) return;
         try {
             const ethereum = window.ethereum;
             if(!window.ethereum) {
@@ -35,6 +36,16 @@ export default function Wallet() {
             setLoading(false);
         } catch (error) {
             console.log(error);
+            notification.open({
+                message: '授权连接metamask，取消',
+                description:
+                    '您取消了该交易的钱包签名，请重试',
+                    onClick: () => {
+                        console.log('Notification Clicked!');
+                    },
+            });
+            setLoading(false);
+            setAccount(null);
         }
     }
 

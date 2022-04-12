@@ -1,5 +1,5 @@
 import { Menu } from 'antd';
-import { AppstoreOutlined, SettingOutlined } from '@ant-design/icons';
+import { AppstoreOutlined } from '@ant-design/icons';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -25,14 +25,14 @@ const Sider = () => {
       <Menu.Item key="/defi/staking" icon={<AppstoreOutlined/>}>
         <Link to="/defi/staking">Staking</Link>
       </Menu.Item>
-      <SubMenu key="sub2" icon={<SettingOutlined />} title="Frams">
+      {/* <SubMenu key="sub2" icon={<SettingOutlined />} title="Frams">
         <Menu.Item key="5">
           <Link to="/defi/l1">LP 质押挖矿</Link>
         </Menu.Item>
         <Menu.Item key="6">
           <Link to="/defi/l2">单币质押挖矿</Link>
         </Menu.Item>
-      </SubMenu>
+      </SubMenu> */}
     </Menu>
   );
 };

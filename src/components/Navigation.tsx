@@ -26,9 +26,9 @@ class Navigation extends React.Component {
         <Menu.Item key="2" icon={<CustomizeIcon style={{color: "orange", fontSize: 18}} type="starcoin-icon-EXCHANGE" />}>
             <a href="http://localhost:3001" target="_blank" rel="noopener noreferrer">Star.DEX</a>
         </Menu.Item>
-        <Menu.Item key="3" icon={<CustomizeIcon style={{color: "orange", fontSize: 18}} type="starcoin-icon-tekunshujuzhili" />}>
+        {/* <Menu.Item key="3" icon={<CustomizeIcon style={{color: "orange", fontSize: 18}} type="starcoin-icon-tekunshujuzhili" />}>
             <Link to="dao">DAO</Link>
-        </Menu.Item>
+        </Menu.Item> */}
         <Menu.Item key="4" icon={<CustomizeIcon style={{color: "orange", fontSize: 18}} type="starcoin-icon-jingdongzhongchou" />}>
             <Link to="launchpad">Launchpad</Link>
         </Menu.Item>
