@@ -37,11 +37,11 @@ export default function StakingItem() {
             </div>
             <div className='vl'>
                 <div>
-                    <span>我的资金</span>
+                    <span>我的本金</span>
                     <span>98</span>
                 </div>
                 <div>
-                    <span>已存入(FIL)</span>
+                    <span>奖励</span>
                     <span>0.0000</span>
                 </div>
             </div>
