@@ -1,4 +1,3 @@
-import { Button } from 'antd';
 import React from 'react'
 import CustomizeIcon from '../../components/customizeIcon';
 import './index.less';

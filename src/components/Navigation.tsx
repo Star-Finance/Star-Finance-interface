@@ -2,7 +2,6 @@ import { Menu } from 'antd';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import CustomizeIcon from '../components/customizeIcon';
-const { SubMenu } = Menu;
 
 class Navigation extends React.Component {
   handleClick = (e: any) => {

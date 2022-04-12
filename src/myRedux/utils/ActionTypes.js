@@ -6,6 +6,8 @@ export function getRandomString(length) {
     return Math.random().toString(36).substr(2, length).split("").join(".")
 }
 
+
+
 export default {
     INIT() {
         return `@@redux/INIT${getRandomString(6)}`
@@ -13,4 +15,4 @@ export default {
     UNKNOWN() {
         return `@@redux/PROBE_UNKNOWN_ACTION${getRandomString(6)}`
     }
-} 
+};

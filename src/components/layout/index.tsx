@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react'
+import React from 'react'
 import { Outlet } from 'react-router'
 import Header from '../header';
 

@@ -16,7 +16,7 @@ const blindboxInfo = {
   author: "Defina",
 }
 
-export default function indedx() {
+export default function Index() {
   return (
     <div className='nft__wapper'>
       <div className='nft__banner'></div>

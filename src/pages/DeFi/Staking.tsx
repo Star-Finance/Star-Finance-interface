@@ -1,3 +1,4 @@
+import { Button } from 'antd';
 import React from 'react';
 import bannerSrc from '../../assets/images/banner.png';
 import './index.less';
