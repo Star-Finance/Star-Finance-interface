@@ -81,9 +81,12 @@ export default function Staking() {
             const {ethereum} = window;
             if(ethereum && stakingUSDCContract&& USDCContract) {
                 const allowance = await USDCContract.allowance(account, stakingUSDCAddress);
-                console.log("授权额度", allowance.toNumber());
+                if(allowance.toNumber() === 0) {
+                    const approveResult = await USDCContract.approve(stakingUSDCAddress, 123456);
+                }
                 const tx = await stakingUSDCContract.stake(value);
-                const sdsd = await tx.wait();
+                await tx.wait();
+                getTotalSupplyOfUSDC();
             } else {
                 // alert("请链接钱包！！！")
             }
@@ -102,8 +105,12 @@ export default function Staking() {
               if(ethereum && stakingUSDTContract && USDTContract) {
                   const allowance = await USDTContract.allowance(account, stakingUSDTAddress);
                   console.log("授权额度", allowance.toNumber());
-                  const tx = await stakingUSDTContract.stake(value);
-                  const sdsd = await tx.wait();
+                  if(allowance.toNumber() === 0) {
+                    const approveResult = await USDTContract.approve(stakingUSDTAddress, 123456);
+                }
+                const tx = await stakingUSDTContract.stake(value);
+                await tx.wait();
+                getTotalSupplyOfUSDT();
               } else {
                 //   alert("请链接钱包！！！")
               }
@@ -122,8 +129,12 @@ export default function Staking() {
                 if(ethereum && stakingWETHContract && WETHContract) {
                     const allowance = await WETHContract.allowance(account, stakingUSDTAddress);
                     console.log("授权额度", allowance.toNumber());
+                    if(allowance.toNumber() === 0) {
+                        const approveResult = await WETHContract.approve(stakingWETHAddress, 123456);
+                    }
                     const tx = await stakingWETHContract.stake(value);
-                    const sdsd = await tx.wait();
+                    await tx.wait();
+                    getTotalSupplyOfUSDT();
                 } else {
                     // alert("请链接钱包！！！")
                 }

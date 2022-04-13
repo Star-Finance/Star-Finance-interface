@@ -65,10 +65,10 @@ export default function StakingItem(props: IStakingItem) {
             </div>
              <div className='vl'>
                 <div>
-                    <Button size="large" shape="round">提取本金</Button>
+                    <Button size="large" shape="round" disabled={balanceOf === 0}>提取本金</Button>
                 </div>
                 <div>
-                    <Button size="large" shape="round">获取收益</Button>
+                    <Button size="large" shape="round" disabled={earned ===0}>获取收益</Button>
                 </div>
             </div>
             <div className="count" style={{marginTop: 10}}>
