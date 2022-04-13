@@ -9,11 +9,14 @@ interface IStakingItem {
     totalSupply: number;
     balanceOf: number;
     earned: number;
-    stakeHandler: (value: number) => {}
+    stakeHandler: (value: number) => {};
+    exit: () => {};
+    getReward: (value: number) => {};
+    withdraw: (value: number) => {}
 }
 
 export default function StakingItem(props: IStakingItem) {
-    const {name, apr, totalSupply, earned, stakeHandler, balanceOf} = props;
+    const {name, apr, totalSupply, earned, stakeHandler, balanceOf, exit, getReward, withdraw} = props;
     const [inputValue, setInputValue] = useState<number>(1);
     
     const onChange = (value: number) => {
@@ -65,7 +68,10 @@ export default function StakingItem(props: IStakingItem) {
             </div>
              <div className='vl'>
                 <div>
-                    <Button size="large" shape="round" disabled={balanceOf === 0}>提取本金</Button>
+                    <Button onClick={() => {
+                        if(balanceOf === 0) return;
+                        withdraw(balanceOf)
+                    }} size="large" shape="round" disabled={balanceOf === 0}>提取本金</Button>
                 </div>
                 <div>
                     <Button size="large" shape="round" disabled={earned ===0}>获取收益</Button>

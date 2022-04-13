@@ -146,6 +146,168 @@ export default function Staking() {
         [stakingWETHContract, WETHContract],
     )
 
+    const withdrawOfUSDC = useCallback(
+      async (value: number) => {
+        try {
+            const {ethereum} = window;
+            if(ethereum && stakingUSDCContract) {
+                const tx = await stakingUSDCContract.withdraw(value);
+                await tx.wait();
+                getTotalSupplyOfUSDC();
+            } else {
+                // alert("请链接钱包！！！")
+            }
+        } catch (error) {
+            console.log(error);
+        }
+      },
+      [stakingUSDCContract],
+    )
+
+    const withdrawOfUSDT = useCallback(
+        async (value: number) => {
+          try {
+              const {ethereum} = window;
+              if(ethereum && stakingUSDTContract) {
+                  const tx = await stakingUSDTContract.withdraw(value);
+                  await tx.wait();
+                  getTotalSupplyOfUSDT();
+              } else {
+                  // alert("请链接钱包！！！")
+              }
+          } catch (error) {
+              console.log(error);
+          }
+        },
+        [stakingUSDTContract],
+      )
+
+      const withdrawOfWETH = useCallback(
+        async (value: number) => {
+          try {
+              const {ethereum} = window;
+              if(ethereum && stakingWETHContract) {
+                  const tx = await stakingWETHContract.withdraw(value);
+                  await tx.wait();
+                  getTotalSupplyOfWETH();
+              } else {
+                  // alert("请链接钱包！！！")
+              }
+          } catch (error) {
+              console.log(error);
+          }
+        },
+        [stakingWETHContract],
+      )
+
+      const getRewardOfUSDC = useCallback(
+        async (value: number) => {
+          try {
+              const {ethereum} = window;
+              if(ethereum && stakingUSDCContract) {
+                  const tx = await stakingUSDCContract.getReward(value);
+                  await tx.wait();
+                  getTotalSupplyOfUSDC();
+              } else {
+                  // alert("请链接钱包！！！")
+              }
+          } catch (error) {
+              console.log(error);
+          }
+        },
+        [stakingUSDCContract],
+      )
+      const getRewardOfUSDT = useCallback(
+        async (value: number) => {
+          try {
+              const {ethereum} = window;
+              if(ethereum && stakingUSDTContract) {
+                  const tx = await stakingUSDTContract.getReward(value);
+                  await tx.wait();
+                  getTotalSupplyOfUSDT();
+              } else {
+                  // alert("请链接钱包！！！")
+              }
+          } catch (error) {
+              console.log(error);
+          }
+        },
+        [stakingUSDTContract],
+      )
+      const getRewardOfWETH = useCallback(
+        async (value: number) => {
+          try {
+              const {ethereum} = window;
+              if(ethereum && stakingWETHContract) {
+                  const tx = await stakingWETHContract.getReward(value);
+                  await tx.wait();
+                  getTotalSupplyOfWETH();
+              } else {
+                  // alert("请链接钱包！！！")
+              }
+          } catch (error) {
+              console.log(error);
+          }
+        },
+        [stakingWETHContract],
+      )
+
+    const exitOfUSDC = useCallback(
+        async () => {
+            try {
+                const {ethereum} = window;
+                if(ethereum && stakingUSDCContract) {
+                    const tx = await stakingUSDCContract.exit();
+                    await tx.wait();
+                    getTotalSupplyOfUSDC();
+                } else {
+                    // alert("请链接钱包！！！")
+                }
+            } catch (error) {
+                console.log(error);
+            }
+        },
+        [stakingUSDCContract],
+    )
+
+    const exitOfUSDT = useCallback(
+        async () => {
+            try {
+                const {ethereum} = window;
+                if(ethereum && stakingUSDTContract) {
+                    const tx = await stakingUSDTContract.exit();
+                    await tx.wait();
+                    getTotalSupplyOfUSDT();
+                } else {
+                    // alert("请链接钱包！！！")
+                }
+            } catch (error) {
+                console.log(error);
+            }
+        },
+        [stakingUSDTContract],
+    )
+
+    const exitOfWETH = useCallback(
+        async () => {
+            try {
+                const {ethereum} = window;
+                if(ethereum && stakingWETHContract) {
+                    const tx = await stakingWETHContract.exit();
+                    await tx.wait();
+                    getTotalSupplyOfWETH();
+                } else {
+                    // alert("请链接钱包！！！")
+                }
+            } catch (error) {
+                console.log(error);
+            }
+        },
+        [stakingWETHContract],
+    )
+      
+
+    
     // connect wallet
     async function connectWallet() {
         try {
@@ -274,14 +436,23 @@ export default function Staking() {
             <StakingItem
              name="USDC" totalSupply={totalSupplyOfUSDC} balanceOf={balanceOfUSDC} earned={earnedOfUSDC} apr={aprOfUSDC}
              stakeHandler={stakeOfUSDC}
+             withdraw={withdrawOfUSDC}
+             getReward={getRewardOfUSDC}
+             exit={exitOfUSDC}
             />
             <StakingItem
                  name="USDT" totalSupply={totalSupplyOfUSDT} balanceOf={balanceOfUSDT} earned={earnedOfUSDT} apr={aprOfUSDT}
                  stakeHandler={stakeOfUSDT}
+                 withdraw={withdrawOfUSDT}
+                getReward={getRewardOfUSDT}
+                exit={exitOfUSDT}
             />
             <StakingItem
                 name="WETH" totalSupply={totalSupplyOfWETH} balanceOf={balanceOfWETH} earned={earnedeOfWETH} apr={aprOfWETH}
                 stakeHandler={stakeOfWETH}
+                withdraw={withdrawOfWETH}
+                getReward={getRewardOfWETH}
+                exit={exitOfWETH}
             />
         </div>
     </div>
