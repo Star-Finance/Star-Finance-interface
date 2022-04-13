@@ -431,7 +431,6 @@ export default function Staking() {
                 <span style={{color: '#f6c342', fontWeight: 'bold', fontSize: 18 }}>0</span>
             </div>
         </div>
-        <Button onClick={() => getTotalSupplyOfUSDC()}>获取totalSupply</Button>
         <div className="stakingList">
             <StakingItem
              name="USDC" totalSupply={totalSupplyOfUSDC} balanceOf={balanceOfUSDC} earned={earnedOfUSDC} apr={aprOfUSDC}
