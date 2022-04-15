@@ -5,6 +5,8 @@ import './index.less';
 import StakingItem from './StakingItem';
 import { ethers } from 'ethers';
 import interfaceAbi from "../../utils/abi/deployments-rinkeby.json";
+import { connect } from 'react-redux';
+import { IStore } from '../../store/state';
 
 const { abi: stakingUSDCAbi, address: stakingUSDCAddress } = interfaceAbi.StarStakingUSDC;
 const { abi: stakingUSDTAbi, address: stakingUSDTAddress } = interfaceAbi.StarStakingUSDT;
@@ -13,10 +15,8 @@ const { abi: USDCAbi, address: USDCAddress } = interfaceAbi.USDC;
 const { abi: USDTAbi, address: USDTAddress } = interfaceAbi.USDT;
 const { abi: WETHAbi, address: WETHAddress } = interfaceAbi.WETH;
 
-console.log(899, stakingUSDCAbi);
-
-export default function Staking() {
-    const [account, setAccount] = useState<string | null>("0x6EB72C67086D5487Dc1C27800afa6d63a3E14c75");
+function Staking(props: any) {
+    const { account } = props.account;
     const [USDCContract, setUSDCContract] = useState<null | ethers.Contract>(null);
     const [USDTContract, setUSDTContract] = useState<null | ethers.Contract>(null);
     const [WETHContract, setWETHContract] = useState<null | ethers.Contract>(null);
@@ -70,8 +70,6 @@ export default function Staking() {
         setUSDCContract(USDCContract);
         setUSDTContract(USDTContract);
         setWETHContract(WETHContract);
-      } else {
-        connectWallet()
       }
     }, [account]) 
 
@@ -305,27 +303,6 @@ export default function Staking() {
         },
         [stakingWETHContract],
     )
-      
-
-    
-    // connect wallet
-    async function connectWallet() {
-        try {
-          const { ethereum } = window;
-          if(!ethereum) {
-            alert("pelase install metamask");
-            return;
-          }
-          const accounts = await ethereum.request({
-            method: "eth_requestAccounts"
-          });
-    
-          setAccount(accounts[0])
-          
-        } catch (error) {
-          console.log(error);
-        }
-    }
 
      // get totalsupply of staking USDC 
     const getTotalSupplyOfUSDC = async () => {
@@ -457,3 +434,7 @@ export default function Staking() {
     </div>
   )
 }
+
+export default connect((store: IStore) => ({
+    account: store.wallet.account
+}))(Staking);

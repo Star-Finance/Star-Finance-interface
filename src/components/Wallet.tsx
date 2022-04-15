@@ -1,57 +1,17 @@
 import { Button, notification } from 'antd'
 import React, { useEffect, useState } from 'react'
+import { connect } from "react-redux"
+import { getWalletAccountAction } from '../store/action/wallet';
+import { IStore } from '../store/state';
 
-export default function Wallet() {
-
-    const [loading, setLoading] = useState<boolean>(false)
-    const [account, setAccount] = useState<null | string>(null);
-
-    const checkedWalletIsConnected = async() => {
-        try {
-            const { ethereum } = window;
-            if(ethereum) {
-                console.log("metamask is available!");
-            } else {
-                console.log("please install metamask");
-            }
-        } catch (error) {
-            console.log(error);
-        }
-    }
+function Wallet(props: any) {
+    const { dispatch, loading, account } = props;
 
     // 连接metamask钱包
     const connectWallet = async() => {
-        if(account) return;
-        try {
-            const ethereum = window.ethereum;
-            if(!window.ethereum) {
-                alert("please install metamask")
-                return;
-            }
-            setLoading(true);
-            const account = await ethereum.request({
-                method: "eth_requestAccounts"
-            })
-            setAccount(account[0]);
-            setLoading(false);
-        } catch (error) {
-            console.log(error);
-            notification.open({
-                message: '授权连接metamask，取消',
-                description:
-                    '您取消了该交易的钱包签名，请重试',
-                    onClick: () => {
-                        console.log('Notification Clicked!');
-                    },
-            });
-            setLoading(false);
-            setAccount(null);
-        }
+        // 触发action，到saga中间件中获取钱包地址数据
+        dispatch(getWalletAccountAction());
     }
-
-    useEffect(() => {
-        checkedWalletIsConnected()
-    }, [])
 
   return (
       <span>
@@ -65,3 +25,9 @@ export default function Wallet() {
       </span>
   )
 }
+
+export default connect((store: IStore) => ({
+    account: store.wallet.account,
+    loading: store.wallet.isLoading,
+
+}))(Wallet)
