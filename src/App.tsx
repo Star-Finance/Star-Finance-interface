@@ -10,6 +10,7 @@ import Staking from './pages/DeFi/Staking';
 import store from  "./store"
 import { Provider } from 'react-redux';
 import { getWalletAccountAction } from './store/action/wallet'
+import Forset from './pages/Faucet';
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
           <Route path='defi' element={<DefiHome />}>
             <Route path="staking" element={<Staking />}></Route>
           </Route>
+          <Route path='faucet' element={<Forset />} />
           <Route path='nft' element={<NFTHome />} />
           <Route path='launchpad' element={<Launchpad />} />
           <Route path='dao' element={<DaoHome />} />

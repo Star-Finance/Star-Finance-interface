@@ -18,6 +18,8 @@ interface IStakingItem {
 export default function StakingItem(props: IStakingItem) {
     const {name, apr, totalSupply, earned, stakeHandler, balanceOf, exit, getReward, withdraw} = props;
     const [inputValue, setInputValue] = useState<number>(1);
+
+    console.log(apr.toFixed(2) , typeof apr);
     
     const onChange = (value: number) => {
         setInputValue(value);
@@ -48,7 +50,7 @@ export default function StakingItem(props: IStakingItem) {
             </ul>
             <div className='apy'>
                 <div>
-                    <span>Apy</span>
+                    <span>Apr</span>
                     <p>{apr.toFixed(2)+"%"}</p>
                 </div>
                 <div>

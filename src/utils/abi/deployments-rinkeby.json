@@ -1,6 +1,6 @@
 {
   "LaunchPad": {
-    "address": "0xCF7Bd9d808b626C722aD031D5EB342a2f05ddcB6",
+    "address": "0x8B63Be487B6227C230Ca7f78c84f3d3522547eB8",
     "abi": [
       {
         "inputs": [
@@ -240,8 +240,175 @@
       }
     ]
   },
+  "Oracle": {
+    "address": "0x0F460E0fC0198e0E64b65c053841117B12C99b47",
+    "abi": [
+      {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "_star",
+            "type": "address"
+          },
+          {
+            "internalType": "address",
+            "name": "_quote",
+            "type": "address"
+          },
+          {
+            "internalType": "address",
+            "name": "_router",
+            "type": "address"
+          }
+        ],
+        "stateMutability": "nonpayable",
+        "type": "constructor"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": true,
+            "internalType": "address",
+            "name": "previousOwner",
+            "type": "address"
+          },
+          {
+            "indexed": true,
+            "internalType": "address",
+            "name": "newOwner",
+            "type": "address"
+          }
+        ],
+        "name": "OwnershipTransferred",
+        "type": "event"
+      },
+      {
+        "inputs": [],
+        "name": "owner",
+        "outputs": [
+          {
+            "internalType": "address",
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "quote",
+        "outputs": [
+          {
+            "internalType": "address",
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "renounceOwnership",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "router",
+        "outputs": [
+          {
+            "internalType": "address",
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "token",
+            "type": "address"
+          },
+          {
+            "internalType": "address",
+            "name": "priceFeed",
+            "type": "address"
+          }
+        ],
+        "name": "setPriceFeed",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "star",
+        "outputs": [
+          {
+            "internalType": "address",
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "starPrice",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "token",
+            "type": "address"
+          }
+        ],
+        "name": "tokenPrice",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "newOwner",
+            "type": "address"
+          }
+        ],
+        "name": "transferOwnership",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      }
+    ]
+  },
   "Star": {
-    "address": "0x14c0C7617aeC8713C7959252bCEb505D3ee4688a",
+    "address": "0x658F8D3F1ca877CB7B7d36AC8Bc31ed056ba8c50",
     "abi": [
       {
         "inputs": [
@@ -527,7 +694,7 @@
     ]
   },
   "StarNFT": {
-    "address": "0x0955Ed9d1737096C6047C000b7e4C853505F36e7",
+    "address": "0x0BBf7Ae36384807d9DFe4049AA808F01Aa0C4c26",
     "abi": [
       {
         "inputs": [
@@ -1095,7 +1262,7 @@
     ]
   },
   "StarStakingUSDC": {
-    "address": "0xDd16BcbB6F0DCf28ECfD2eD5DA664c5d3B89b5EE",
+    "address": "0xF2d1f1033f1B5073e06d28ABeB59F1250092fC41",
     "abi": [
       {
         "inputs": [
@@ -1112,6 +1279,11 @@
           {
             "internalType": "address",
             "name": "_stakingToken",
+            "type": "address"
+          },
+          {
+            "internalType": "address",
+            "name": "_oracle",
             "type": "address"
           }
         ],
@@ -1187,6 +1359,19 @@
         ],
         "name": "Withdrawn",
         "type": "event"
+      },
+      {
+        "inputs": [],
+        "name": "apr",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
       },
       {
         "inputs": [
@@ -1290,6 +1475,19 @@
         "name": "notifyRewardAmount",
         "outputs": [],
         "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "oracle",
+        "outputs": [
+          {
+            "internalType": "address",
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "stateMutability": "view",
         "type": "function"
       },
       {
@@ -1509,7 +1707,7 @@
     ]
   },
   "StarStakingUSDT": {
-    "address": "0xeAD6e66Ac67941E40915CA99716D7AedafEA5911",
+    "address": "0x0A6De63DdF98FaF26406579d04bED38619673150",
     "abi": [
       {
         "inputs": [
@@ -1526,6 +1724,11 @@
           {
             "internalType": "address",
             "name": "_stakingToken",
+            "type": "address"
+          },
+          {
+            "internalType": "address",
+            "name": "_oracle",
             "type": "address"
           }
         ],
@@ -1601,6 +1804,19 @@
         ],
         "name": "Withdrawn",
         "type": "event"
+      },
+      {
+        "inputs": [],
+        "name": "apr",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
       },
       {
         "inputs": [
@@ -1704,6 +1920,19 @@
         "name": "notifyRewardAmount",
         "outputs": [],
         "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "oracle",
+        "outputs": [
+          {
+            "internalType": "address",
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "stateMutability": "view",
         "type": "function"
       },
       {
@@ -1923,7 +2152,7 @@
     ]
   },
   "StarStakingWETH": {
-    "address": "0x5eA5b60cEa3021242cA642beFc50A39EeF789cEC",
+    "address": "0xF755ccd113c3fD76f3288e6125aF376cAf6F4d93",
     "abi": [
       {
         "inputs": [
@@ -1940,6 +2169,11 @@
           {
             "internalType": "address",
             "name": "_stakingToken",
+            "type": "address"
+          },
+          {
+            "internalType": "address",
+            "name": "_oracle",
             "type": "address"
           }
         ],
@@ -2015,6 +2249,19 @@
         ],
         "name": "Withdrawn",
         "type": "event"
+      },
+      {
+        "inputs": [],
+        "name": "apr",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
       },
       {
         "inputs": [
@@ -2118,6 +2365,19 @@
         "name": "notifyRewardAmount",
         "outputs": [],
         "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "oracle",
+        "outputs": [
+          {
+            "internalType": "address",
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "stateMutability": "view",
         "type": "function"
       },
       {
@@ -2337,7 +2597,7 @@
     ]
   },
   "USDC": {
-    "address": "0xAF64aC35530CC84672FbD8bb117439AfAe4D3bE3",
+    "address": "0xa49B496f38f5DbF7F94f6d246808C924a8950509",
     "abi": [
       {
         "inputs": [
@@ -2778,7 +3038,7 @@
     ]
   },
   "USDT": {
-    "address": "0xa8d8ac2Ee710b691be4baeA6665530b331b578Cc",
+    "address": "0xAb623adc122E86a0Ff6b4bc9F38eA8267329df9F",
     "abi": [
       {
         "inputs": [
@@ -3219,7 +3479,7 @@
     ]
   },
   "WETH": {
-    "address": "0xFCf0F4Da3C1683d321bE6cE5d6C093A02c961d61",
+    "address": "0xB3229Eb1de6D1c3c18c043aBf3D3a13263320FcF",
     "abi": [
       {
         "inputs": [

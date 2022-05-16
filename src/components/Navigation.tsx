@@ -17,6 +17,9 @@ class Navigation extends React.Component {
         defaultOpenKeys={['sub1']}
         mode="horizontal"
       >
+        <Menu.Item key="3" icon={<CustomizeIcon style={{color: "orange", fontSize: 18}} type="starcoin-icon-yishu" />}>
+            <Link to="/faucet">Faucet</Link>
+        </Menu.Item>
         <Menu.Item key="0" icon={<CustomizeIcon style={{color: "orange", fontSize: 18}} type="starcoin-icon-yishu" />}>
             <Link to="defi/staking">Defi</Link>
         </Menu.Item>
